@@ -1,0 +1,120 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-noto-sans-deva), system-ui, sans-serif;
+  --font-serif: var(--font-fraunces), var(--font-noto-serif-deva), Georgia, serif;
+  --color-paper: #faf8f4;
+  --color-ink: #1f1d1a;
+  --color-muted: #6b665e;
+  --color-line: #e2ddd3;
+  --color-brand: #27408b;
+  --color-brand-dark: #1d3070;
+  --color-tint: #eef0f8;
+  --color-side: #f3efe7;
+  --color-warn: #8a4b08;
+  --color-warn-bg: #fdf3e3;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: #cfd6f0;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+@keyframes typing {
+  0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+.typing-dot {
+  animation: typing 1.2s infinite ease-in-out;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+.reveal {
+  animation: reveal 0.45s ease both;
+  animation-delay: var(--d, 0ms);
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, var(--color-muted) 30%, var(--color-brand) 50%, var(--color-muted) 70%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 2.4s linear infinite;
+}
+
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+.caret {
+  animation: caret 1s steps(1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .shimmer-text,
+  .caret {
+    animation: none;
+  }
+
+  .shimmer-text {
+    color: var(--color-muted);
+    background: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .typing-dot {
+    animation: none;
+  }
+}

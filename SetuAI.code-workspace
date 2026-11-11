@@ -1,0 +1,16 @@
+{
+  "folders": [
+    { "name": "SetuAI", "path": "." },
+    { "name": "backend", "path": "backend" },
+    { "name": "frontend", "path": "frontend" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder:backend}/.venv/bin/python",
+    "files.exclude": {
+      "**/.venv": true,
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/__pycache__": true
+    }
+  }
+}
